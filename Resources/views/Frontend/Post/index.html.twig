@@ -28,7 +28,7 @@
     {% endif %}
   {% endif %}
 {% endblock %}
-{% block content %}
+{% block blog_content %}
   {% for post in pagination %}
     {% include 'BlogBundle:Frontend/Post:item.html.twig' with {'post': post} %}
   {% else %}

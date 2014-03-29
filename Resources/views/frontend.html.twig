@@ -5,8 +5,8 @@
       {% include "BlogBundle::frontend.header.html.twig" %}
     {% endblock %}
     <div id="wrapper" class="row-fluid">
-      <div id="content" class="span8">{% block content %}Your content Here!{% endblock %}</div>
-      <div id="sidebar" class="span4">
+      <div id="content" class="col-md-8">{% block blog_content %}Your content Here!{% endblock %}</div>
+      <div id="sidebar" class="col-md-4">
         {% block sidebar %}
           {% include "BlogBundle::frontend.sidebar.html.twig" %}
         {% endblock %}
