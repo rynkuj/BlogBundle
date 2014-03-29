@@ -1,7 +1,7 @@
 {% if rating is not defined %}
   {% set rating = post.rating %}
 {% endif %}
-<article class=" row">
+<article class="row">
   {% include 'BlogBundle:Frontend/Post:item.header.html.twig' with {'post': post, 'rating': rating} %}
   {% if post.hasImage %}
     <img class="img" src="{{ post.image | imagine_filter('list_widen_200') }}" alt="{{ post }}"/>
@@ -14,7 +14,7 @@
     </p>
   {% endif %}
   <small>
-    Publicado el
+    {% trans %}Published on{% endtrans %}
     <time datetime="{{ post.publishedAt | date('c') }}">{{ post.publishedAt | localeDate('full') }}.</time>
   </small>
 </article>
