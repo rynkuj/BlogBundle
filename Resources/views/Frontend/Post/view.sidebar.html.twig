@@ -1,10 +1,10 @@
 <div class="block">
-  <h4>{% trans %}Search{% endtrans %}</h4>
+{#   <h4>{% trans %}Search{% endtrans %}</h4>#}
 
-  <form id="search-widget" action="/search" method="get">
-    <input type="text" id="q" name="q" required="required"/>
-  </form>
-</div>
+{#   <form id="search-widget" action="/search" method="get">#}
+{#     <input type="text" id="q" name="q" required="required"/>#}
+{#   </form>#}
+{# </div>#}
 <div class="block">
   <h4>{% trans %}Latest posts{% endtrans %}</h4>
   {{ render(controller('BlogBundle:Frontend\\Widget:latestPost')) }}

@@ -2,11 +2,13 @@
   {% set rating = post.rating %}
 {% endif %}
 <article class="row">
-  {% include 'BlogBundle:Frontend/Post:item.header.html.twig' with {'post': post, 'rating': rating} %}
+  <div class="row">
+        {% include 'BlogBundle:Frontend/Post:item.header.html.twig' with {'post': post, 'rating': rating} %}
+  </div>
   {% if post.hasImage %}
     <img class="img" src="{{ post.image | imagine_filter('list_widen_200') }}" alt="{{ post }}"/>
   {% endif %}
-  {{ post.intro | raw }}
+  <p>{{ post.intro | raw }}</p>
   {% if post.hasSource %}
     <p>Enlace a la fuente original:
       <a href="{{ path('_blog_redirect_post_source', {id: post.id}) }}" target="_blank"

@@ -1,6 +1,6 @@
 {% extends "::frontend.html.twig" %}
 {% block title %}
-  {% if query %} Resultados de busqueda "{{ query }}" {% else %} Buscar {% endif %}
+  {% if query %} {% trans %}Search results{% endtrans %} "{{ query }}" {% else %} {% trans %}Search{% endtrans %} {% endif %}
   {% if page != 1 %}| Página {{ page }} {% endif %} | {{ parent() }}
 {% endblock %}
 {% block canonical %}
@@ -12,7 +12,7 @@
   {{ parent() }}
   {% if items.0 is defined %}
     <meta
-        property="og:title" content="{% if query %}Resultados de busqueda {{ query }}{% else %} Buscar {% endif %}"/>
+        property="og:title" content="{% if query %} {% trans %}Search results{% endtrans %} {{ query }}{% else %} Buscar {% endif %}"/>
     <meta property="og:url" content="{{ url('_blog_search', {'q': query}) }}"/>
     <meta property="og:description" content="{{ items.0.intro | striptags | truncate(150) }}"/>
     {% if items.0.hasImage %}
@@ -24,25 +24,25 @@
   {{ parent() }}
   {% if items.0 is defined %}
     <meta property="twitter:title"
-          content="{% if query %}Resultados de busqueda {{ query }}{% else %} Buscar {% endif %}"/>
+          content="{% if query %}{% trans %}Search results{% endtrans %} {{ query }}{% else %} {% trans %}Search{% endtrans %} {% endif %}"/>
     <meta property="twitter:description" content="{{ items.0.intro | striptags | truncate(150) }}"/>
     {% if items.0.hasImage %}
       <meta property="twitter:image:src" content="{{ items.0.image }}"/>
     {% endif %}
   {% endif %}
 {% endblock %}
-{% block content %}
+{% block blog_content %}
   <article class=" row">
     <header>
       {% if query %}
         <h1>
           <a href="{{ path('_blog_search', {'q': query}) }}">
-            Resultados de busqueda "{{ query }}"
-            {% if page != 1 %} Página {{ page }}{% endif %}
+            {% trans %}Search results{% endtrans %} "{{ query }}"
+            {% if page != 1 %} {% trans %}Page{% endtrans %} {{ page }}{% endif %}
           </a>
         </h1>
       {% else %}
-        <h1>Buscar</h1>
+        <h1>{% trans %}Search{% endtrans %}</h1>
       {% endif %}
     </header>
     {% include 'BlogBundle:Frontend/Search:form.html.twig' with {'form': form} %}

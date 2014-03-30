@@ -1,36 +1,37 @@
 {% extends "::frontend.html.twig" %}
-{% block title %} Archivo del sitio | {{ parent() }}{% endblock %}
+{% block title %} {% trans %}Site archive{% endtrans %} | {{ parent() }}{% endblock %}
 {% block canonical %}
   <link rel="canonical" href="{{ url('_blog_archive') }}"/>{% endblock %}
-{% block meta_description %} Puedes encontrar todas las entradas del sitio ordenadas por fecha {% endblock %}
+{# {% block meta_description %} Puedes encontrar todas las entradas del sitio ordenadas por fecha {% endblock %}#}
+{% block meta_description %} {% trans %}You can find all the entries ordered by date{% endtrans %} {% endblock %}
 {% block meta_og %}
   {{ parent() }}
-  <meta property="og:title" content="Archivo del sitio"/>
+  <meta property="og:title" content="Site archive"/>
   <meta property="og:url" content="{{ url('_blog_archive') }}"/>
-  <meta property="og:description" content="Puedes encontrar todas las entradas del sitio ordenadas por fecha"/>
+  <meta property="og:description" content="{% trans %}You can find all the entries ordered by date{% endtrans %}"/>
 {% endblock %}
 {% block meta_twiter %}
   {{ parent() }}
-  <meta property="twitter:title" content="Archivo del sitio"/>
-  <meta property="twitter:description" content="Puedes encontrar todas las entradas del sitio ordenadas por fecha"/>
+  <meta property="twitter:title" content="Site archive"/>
+  <meta property="twitter:description" content="{% trans %}You can find all the entries ordered by date{% endtrans %}"/>
 {% endblock %}
 
 {% block blog_content %}
   <article class="row">
     <header>
-      <h1><a href="{{ path('_blog_archive') }}" title="Archivo del sitio">Archivo del sitio</a></h1>
+      <h1><a href="{{ path('_blog_archive') }}" title="{% trans %}Site archive{% endtrans %}">{% trans %}Site archive{% endtrans %}</a></h1>
     </header>
-    <p> Puedes encontrar todas las entradas del sitio ordenadas por fecha.</p>
+    <p> {% trans %}You can find all the entries ordered by date{% endtrans %}.</p>
     {% for year, posts in items %}
-      <h3> Año {{ year }}</h3>
+      <h3> {% trans %}Year{% endtrans %} {{ year }}</h3>
       <ul>
         {% for item in posts %}
           <li>
             <a href="{{ path('_blog_archive_page' ,
             { 'year' : item.date.format('Y'), 'month': item.date.format('m') }) }}"
-               title="Archivo del sitio {{ item.date | localeCustomDate('short') }}">
+               title="Site archive {{ item.date | localeCustomDate('short') }}">
               {{ item.date | localeCustomDate('short') | capitalize }}
-            </a> {{ item.n }} elementos.
+            </a> {{ item.n }} {% trans %}elements{% endtrans %}.
           </li>
         {% else %}
           <li>No hay elementos</li>
