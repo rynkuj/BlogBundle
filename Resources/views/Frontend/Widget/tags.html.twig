@@ -1,4 +1,4 @@
-<ul id="tags">
+<ul id="tags" class="blog-tags-list blog-tags-sidebar-list">
   {% for tag in tags %}
     <li><a href="{{ path('_blog_tag', { 'slug' : tag.slug }) }}" title="{{ tag }}">{{ tag }}</a></li>
   {% else %}

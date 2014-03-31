@@ -1,7 +1,7 @@
 {% extends "::frontend.html.twig" %}
 {% block title %} Todos los Tags {% endblock %}
-{% block content %}
-  <ul>
+{% block blog_content %}
+  <ul class="blog-tags-list">
     {% for tag in pagination %}
       <li><a href="{{ path('_blog_tag', { 'slug' : tag.slug }) }}">{{ tag }}</a> ({{ tag.items }} entradas)</li>
     {% else %}

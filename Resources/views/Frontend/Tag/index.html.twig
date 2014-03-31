@@ -27,7 +27,7 @@
           href="{{ url('_blog_feed_tag', { 'slug' : tag.slug }) }}"/>
   {% endblock %}
 
-{% block content %}
+{% block blog_content %}
   {% for post in pagination %}
     {% include 'BlogBundle:Frontend/Post:item.html.twig' with {'post': post} %}
   {% else %}
