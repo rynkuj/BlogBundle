@@ -1,13 +1,13 @@
-<h2>Dejanos tu comentario</h2>
+<h2>{% trans %}Leave a comment{% endtrans %}</h2>
 <form id="post-comment" action="{{ path('_blog_comment_create', { 'post_id' : post.id }) }}"
       method="post" {{ form_enctype(form) }}>
-  <div class="row-fluid">
+  <div class="row row-fluid">
     {% if form_errors(form) %}
       <div class="alert alert-error">{{ form_errors(form) }}</div>
     {% endif %}
-    <div class="span7">
+    <div class="col-md-7">
       <p>
-        <label for="">Comentario(*)</label>
+        <label for="">{% trans %}Comment{% endtrans %}(*)</label>
         {% if form_errors(form.content) %}
 
       <div class="alert alert-error">{{ form_errors(form.content) }}</div>
@@ -15,9 +15,9 @@
       {{ form_widget(form.content) }}
       </p>
     </div>
-    <div class="span5">
+    <div class="col-md-5">
       <p>
-        <label for="">Nombre(*)</label>
+        <label for="">{% trans %}Name{% endtrans %}(*)</label>
         {% if form_errors(form.userName) %}
 
       <div class="alert alert-error">{{ form_errors(form.userName) }}</div>
@@ -25,7 +25,7 @@
       {{ form_widget(form.userName) }}
       </p>
       <p>
-        <label for="">Correo</label>
+        <label for="">{% trans %}E-mail{% endtrans %}</label>
         {% if form_errors(form.userEmail) %}
 
       <div class="alert alert-error">{{ form_errors(form.userEmail) }}</div>
@@ -33,7 +33,7 @@
       {{ form_widget(form.userEmail) }}
       </p>
       <p>
-        <label for="">Web</label>
+        <label for="">{% trans %}Website{% endtrans %}</label>
         {% if form_errors(form.userWeb) %}
 
       <div class="alert alert-error">{{ form_errors(form.userWeb) }}</div>
@@ -42,18 +42,18 @@
       </p>
     </div>
   </div>
-  <div class="row-fluid row-captcha">
+  <div class="row row-fluid row-captcha">
     <p>
-      <label for="">(*)¿Eres humano?</label>
+      <label for="">(*){% trans %}Are you human{% endtrans %}?</label>
       {% if form_errors(form.captcha) %}
     <div class="alert alert-error">{{ form_errors(form.captcha) }}</div>
     {% endif %}
     {{ form_widget(form.captcha, { 'attr': {'class': 'captcha' }} ) }}
 
-    <button class="btn" type="submit">Enviar</button>
+    <button class="btn" type="submit">{% trans %}Submit{% endtrans %}</button>
     </p>
   </div>
 
   {{ form_rest(form) }}
 </form>
-<p>Los campos marcados con (*) son obligatorios</p>
+<p>{% trans %}Fields marked with{% endtrans %} (*) {% trans %}are required{% endtrans %}</p>

@@ -1,6 +1,6 @@
 <section id="comments" class="row">
   <header>
-    <h3>Comentarios</h3>
+    <h3>{% trans %}Comments{% endtrans %}</h3>
   </header>
   {% for comment in comments %}
     <article class="comment" id="comment-{{ comment.id }}">
@@ -20,7 +20,7 @@
       </div>
     </article>
   {% else %}
-    <p>No hay comentarios, sé el primero! ... </p>
+    <p>{% trans %}No comments yet, be the first{% endtrans %}! ... </p>
   {% endfor %}
   <div class="clear_fix"></div>
   {% include 'BlogBundle:Frontend/Comment:form.html.twig' with {'form': form, 'post': post } %}
