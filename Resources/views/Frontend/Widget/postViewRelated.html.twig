@@ -1,15 +1,15 @@
 {% if related %}
-  <div class="row-fluid">
+  <div class="row">
     {% for post in related %}
-      <div class="span4">
+      <div class="col-md-12">
         <p>
-          <a href="{{ path('_blog_view', { 'slug' : post.slug }) }}">{{ post }}</a></p>
+          <a href="{{ path('_blog_view', { 'slug' : post.slug }) }}">{{ post }}</a>
         {% if post.hasImage %}
           <a href="{{ path('_blog_view', { 'slug' : post.slug }) }}">
             <img src="{{ post.image | imagine_filter('list_widen_200') }}" alt="{{ post }}"/>
           </a>
         {% endif %}
-        <p>
+        </p>
       </div>
     {% else %}
       <p>No hay elementos</p>
