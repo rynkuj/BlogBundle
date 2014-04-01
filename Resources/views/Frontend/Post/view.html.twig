@@ -23,7 +23,8 @@
   {% endif %}
 {% endblock %}
 {% block blog_content %}
-  <article class=" row">
+<div class="row">
+  <article>
     {% include 'BlogBundle:Frontend/Post:view.header.html.twig' with {'post': post, 'rating': post.rating, 'h' : 'h1'} %}
     {{ post.content | raw }}
 
@@ -35,12 +36,17 @@
     {% endif %}
     {% include 'BlogBundle:Frontend/Post:view.published.html.twig' with {'post': post  } %}
   </article>
-  {% include 'BlogBundle:Frontend/Post:view.rate.html.twig' with {'post': post  } %}
-  {% include 'BlogBundle:Frontend/Post:view.social.html.twig' with {'url': url('_blog_view', { 'slug' : post.slug }) } %}
-  {% include 'BlogBundle:Frontend/Post:view.tags.html.twig' with {'tags': post.tags } %}
-  {% include 'BlogBundle:Frontend/Post:view.related.html.twig' with {'post': post  } %}
-  {% include 'BlogBundle:Frontend/Post:view.botton.html.twig' %}
-  {% include 'BlogBundle:Frontend/Post:view.comment.html.twig' with {'form': form, 'comments': comments } %}
+</div>  
+{#   {% include 'BlogBundle:Frontend/Post:view.rate.html.twig' with {'post': post  } %}#}
+{#   {% include 'BlogBundle:Frontend/Post:view.social.html.twig' with {'url': url('_blog_view', { 'slug' : post.slug }) } %}#}
+<div class="row"> 
+    <h4>{% trans %}Tags{% endtrans %}</h4>
+    {% include 'BlogBundle:Frontend/Post:view.tags.html.twig' with {'tags': post.tags } %} 
+</div>  
+<div class="row">    {% include 'BlogBundle:Frontend/Post:view.related.html.twig' with {'post': post  } %} </div>
+
+{#   {% include 'BlogBundle:Frontend/Post:view.botton.html.twig' %}#}
+{#   {% include 'BlogBundle:Frontend/Post:view.comment.html.twig' with {'form': form, 'comments': comments } %}#}
 {% endblock %}
 
 {% block sidebar %}

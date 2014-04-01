@@ -1,4 +1,5 @@
 <p class="time">
-  Publicado el
-  <time datetime="{{ post.publishedAt | date('c') }}">{{ post.publishedAt | localeDate('full') }}</time>
+  {% trans %}Published on{% endtrans %}
+{#   <time datetime="{{ post.publishedAt | date('c') }}">{{ post.publishedAt | localeDate('full') }}</time>#}
+  <time datetime="{{ post.publishedAt | date('c') }}">{{ post.publishedAt | date("m-d-Y, H:i", "Europe/Warsaw") }}.</time>
 </p>
